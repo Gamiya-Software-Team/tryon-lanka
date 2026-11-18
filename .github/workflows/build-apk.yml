@@ -29,6 +29,8 @@ jobs:
       - uses: subosito/flutter-action@v2
         with:
           channel: stable
+          # Template uses AGP 8.x; Flutter 3.50+ needs AGP 9.
+          flutter-version: 3.44.x
           cache: true
 
       - name: Flutter version
