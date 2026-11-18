@@ -52,6 +52,13 @@ jobs:
       - name: Get packages
         run: flutter pub get
 
+      - name: Patch old plugins for Android Gradle Plugin 9
+        run: |
+          # AGP 9 rejects getDefaultProguardFile('proguard-android.txt').
+          grep -rl "proguard-android.txt" "$PUB_CACHE/hosted/pub.dev" --include=build.gradle* 2>/dev/null \
+            | xargs -r sed -i "s/proguard-android.txt/proguard-android-optimize.txt/g"
+          echo "patched"
+
       - name: Generate env.g.dart
         run: dart run nylo_framework:main make:env
 
