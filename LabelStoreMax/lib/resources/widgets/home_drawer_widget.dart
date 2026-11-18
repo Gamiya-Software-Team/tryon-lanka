@@ -9,6 +9,7 @@
 //  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 
 import 'package:flutter/material.dart';
+import '/resources/pages/tryon_hub_page.dart';
 import '/resources/widgets/store_logo_widget.dart';
 import '/resources/pages/account_detail_page.dart';
 import '/resources/pages/cart_page.dart';
@@ -88,6 +89,21 @@ class _HomeDrawerWidgetState extends NyState<HomeDrawerWidget> {
                       leading: Icon(Icons.account_circle),
                       onTap: _actionProfile,
                     ),
+                  ListTile(
+                    title: Text(
+                      trans("Live Try-On"),
+                      style: Theme.of(context)
+                          .textTheme
+                          .bodyMedium!
+                          .copyWith(fontSize: 16),
+                    ),
+                    leading: Icon(Icons.photo_camera_front_outlined),
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (_) => const TryOnHubPage()));
+                    },
+                  ),
                   if (widget.wooSignalApp!.wishlistEnabled == true)
                     ListTile(
                       title: Text(

@@ -15,7 +15,7 @@
 # Android https://flutter.dev/docs/deployment/android
 
 name: flutter_app
-description: Label StoreMax
+description: TRYON LANKA - Wear it before you buy it.
 
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
@@ -51,6 +51,11 @@ dependencies:
   collection: ^1.19.1
   flutter_stripe: ^14.0.0
   animate_do: ^5.1.0
+  # TRYON LANKA live try-on (on-device, no cloud AI)
+  camera: '>=0.11.0 <1.0.0'
+  google_mlkit_pose_detection: '>=0.13.0 <1.0.0'
+  path_provider: ^2.1.4
+  share_plus: '>=11.0.0 <14.0.0'
   flutter:
     sdk: flutter
   flutter_localizations:

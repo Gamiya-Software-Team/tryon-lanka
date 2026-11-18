@@ -27,17 +27,7 @@ final class LocalizationConfig {
   // One entry per file in lang/ - keep the two in sync.
   static const List<Locale> supportedLocales = <Locale>[
     Locale('en'),
-    Locale('de'),
-    Locale('es'),
-    Locale('fr'),
-    Locale('hi'),
-    Locale('id'),
-    Locale('it'),
-    Locale('nl'),
-    Locale('pt'),
-    Locale('th'),
-    Locale('tr'),
-    Locale('zh'),
+    Locale('si'),
   ];
 
   // Fallback language code if a translation is missing

@@ -136,7 +136,7 @@ void main() {
           reason: 'lib/config/localization.dart and lang/ must agree - a '
               'locale listed with no file falls back to raw keys, and a file '
               'with no locale can never be selected');
-      expect(declared.length, 12);
+      expect(declared.length, 2);
     });
 
     nyTest('English is the fallback and the language files live in lang/',

@@ -287,5 +287,34 @@
     "offline_banner": {
       "message": "No internet connection"
     }
-  }
+  },
+  "TRY WITH CAMERA": "TRY WITH CAMERA",
+  "Camera privacy": "Camera privacy",
+  "tryon_privacy_body": "Your camera is used only for the live try-on. Body tracking runs on this phone. No video is recorded and no camera frames or body points are uploaded. A photo is created only when you tap capture, and leaves your phone only if you tap Share.",
+  "tryon_disclaimer": "This is a 2D preview to help you choose. It is not a guarantee of exact size or fit - please check the size guide.",
+  "Continue to camera": "Continue to camera",
+  "No camera found on this device": "No camera found on this device",
+  "Camera could not be opened": "Camera could not be opened",
+  "Camera permission was denied": "Camera permission was denied. Allow camera access in your phone settings to use Try-On.",
+  "Garment image unavailable, showing preview": "Garment image unavailable, showing preview",
+  "Could not capture preview": "Could not capture preview",
+  "Stop camera": "Stop camera",
+  "Processed on this phone": "Processed on this phone",
+  "Switch camera": "Switch camera",
+  "tryon_step_back": "Step back so your shoulders and waist are visible",
+  "Try again": "Try again",
+  "Try-On preview": "Try-On preview",
+  "Save": "Save",
+  "Share": "Share",
+  "Saved on this phone": "Saved on this phone",
+  "Try-On not available": "Try-On not available",
+  "tryon_unavailable_body": "Live try-on is not ready for this product yet. You can still try our demo garments to see how it works.",
+  "Try demo garments": "Try demo garments",
+  "Live Try-On": "Live Try-On",
+  "Wear it before you buy it.": "Wear it before you buy it.",
+  "tryon_how_1": "Open a T-shirt or shirt and tap TRY WITH CAMERA.",
+  "tryon_how_2": "Stand about 1.5 m from the phone so your shoulders and waist are in view.",
+  "tryon_how_3": "Move naturally, switch garments and capture a preview photo.",
+  "Try-On ready products": "Try-On ready products",
+  "tryon_no_products": "No try-on ready products yet. Products appear here once the store enables Try-On for them."
 }

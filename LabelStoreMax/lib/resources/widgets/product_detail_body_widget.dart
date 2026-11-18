@@ -17,6 +17,7 @@ import '/resources/widgets/product_detail_image_swiper_widget.dart';
 import '/resources/widgets/product_detail_related_products_widget.dart';
 import '/resources/widgets/product_detail_reviews_widget.dart';
 import '/resources/widgets/product_detail_upsell_widget.dart';
+import '/resources/widgets/tryon_button_widget.dart';
 import 'package:woosignal/models/response/product.dart';
 import 'package:woosignal/models/response/woosignal_app.dart';
 
@@ -39,6 +40,9 @@ class ProductDetailBodyWidget extends StatelessWidget {
 
         ProductDetailHeaderWidget(product: product),
         // </Header title + price>
+
+        Skeleton.ignore(child: TryOnButtonWidget(product: product)),
+        // </TRYON LANKA live try-on>
 
         ProductDetailDescriptionWidget(product: product),
         // </Description body>

@@ -6,7 +6,7 @@ import 'package:nylo_framework/nylo_framework.dart';
 
 /// Translation tests.
 ///
-/// This template ships 12 languages. `NyLocalization.translate()` returns the
+/// TRYON LANKA ships English and Sinhala. `NyLocalization.translate()` returns the
 /// raw key when a translation is missing, so a key present in `en.json` and
 /// absent from `de.json` shows a German customer the English key verbatim -
 /// there is no fallback to English. These tests are the guard against that,
@@ -77,12 +77,9 @@ void main() {
   final RegExp placeholder = RegExp(r'\{\{(\w+)\}\}');
 
   nyGroup('language files', () {
-    nyTest('all twelve are present and parse', () async {
-      expect(languages.length, 12);
-      expect(languages.keys.toList()..sort(), [
-        'de', 'en', 'es', 'fr', 'hi', 'id',
-        'it', 'nl', 'pt', 'th', 'tr', 'zh',
-      ]);
+    nyTest('English and Sinhala are present and parse', () async {
+      expect(languages.length, 2);
+      expect(languages.keys.toList()..sort(), ['en', 'si']);
       for (Map<String, String> language in languages.values) {
         expect(language, isNotEmpty);
       }
