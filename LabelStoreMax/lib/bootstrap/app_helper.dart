@@ -15,4 +15,8 @@ class AppHelper {
 
   static final AppHelper instance = AppHelper._privateConstructor();
   WooSignalApp? appConfig;
+
+  /// TRYON LANKA: true only when the store settings loaded from WooSignal.
+  /// When false the app opens in offline Try-On mode instead of the shop.
+  bool storeConnected = false;
 }

@@ -316,5 +316,6 @@
   "tryon_how_2": "Stand about 1.5 m from the phone so your shoulders and waist are in view.",
   "tryon_how_3": "Move naturally, switch garments and capture a preview photo.",
   "Try-On ready products": "Try-On ready products",
-  "tryon_no_products": "No try-on ready products yet. Products appear here once the store enables Try-On for them."
+  "tryon_no_products": "No try-on ready products yet. Products appear here once the store enables Try-On for them.",
+  "tryon_store_not_connected": "Shop is not connected yet. Live Try-On works now - products, cart and checkout will appear once the store is connected."
 }

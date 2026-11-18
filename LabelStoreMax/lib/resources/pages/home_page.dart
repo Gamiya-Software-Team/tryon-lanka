@@ -14,6 +14,7 @@ import '/bootstrap/app_helper.dart';
 import '/resources/widgets/compo_theme_widget.dart';
 import '/resources/widgets/mello_theme_widget.dart';
 import '/resources/widgets/notic_theme_widget.dart';
+import '/resources/pages/tryon_hub_page.dart';
 import 'package:woosignal/models/response/woosignal_app.dart';
 
 class HomePage extends NyStatefulWidget {
@@ -27,6 +28,11 @@ class _HomePageState extends NyPage<HomePage> {
 
   @override
   Widget view(BuildContext context) {
+    // TRYON LANKA: without store settings the shop screens have no data, so
+    // open straight into Try-On (works fully offline).
+    if (!AppHelper.instance.storeConnected) {
+      return const TryOnHubPage(storeConnected: false);
+    }
     return match(
         AppHelper.instance.appConfig?.theme,
         () => {

@@ -48,8 +48,21 @@ class AppProvider implements NyProvider {
     };
 
     // WooSignal Setup
-    WooSignalApp? wooSignalApp =
-        await (appWooSignal((api) => api.getApp(encrypted: shouldEncrypt())));
+    // TRYON LANKA: never let a missing/invalid store key or no internet stop
+    // the app from opening.
+    WooSignalApp? wooSignalApp;
+    final String wsKey = (getEnv('WOOSIGNAL_APP_KEY') ?? '').toString();
+    if (wsKey.isNotEmpty && wsKey != 'your app key') {
+      try {
+        wooSignalApp = await (appWooSignal(
+                (api) => api.getApp(encrypted: shouldEncrypt())))
+            .timeout(const Duration(seconds: 12));
+      } catch (e) {
+        NyLogger.error('Store settings could not be loaded: $e');
+        wooSignalApp = null;
+      }
+    }
+    AppHelper.instance.storeConnected = wooSignalApp != null;
     Locale locale = Locale('en');
 
     if (wooSignalApp != null) {

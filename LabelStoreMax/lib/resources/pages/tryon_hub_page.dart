@@ -11,7 +11,10 @@ import '/resources/pages/product_detail_page.dart';
 import '/resources/pages/tryon_page.dart';
 
 class TryOnHubPage extends StatefulWidget {
-  const TryOnHubPage({super.key});
+  const TryOnHubPage({super.key, this.storeConnected = true});
+
+  /// False when the app opened without store settings (offline Try-On mode).
+  final bool storeConnected;
 
   @override
   State<TryOnHubPage> createState() => _TryOnHubPageState();
@@ -28,9 +31,14 @@ class _TryOnHubPageState extends State<TryOnHubPage> {
   }
 
   Future<void> _load() async {
+    if (!widget.storeConnected) {
+      if (mounted) setState(() => _loading = false);
+      return;
+    }
     try {
       final all = await appWooSignal((api) => api.getProducts(
-          perPage: 50, status: "publish", stockStatus: "instock"));
+              perPage: 50, status: "publish", stockStatus: "instock"))
+          .timeout(const Duration(seconds: 15));
       _products = (all as List<Product>)
           .where((p) => GarmentCalibration.fromMetaList(p.metaData).enabled)
           .toList();
@@ -47,6 +55,7 @@ class _TryOnHubPageState extends State<TryOnHubPage> {
     return Scaffold(
       backgroundColor: const Color(0xFFF7F5F0),
       appBar: AppBar(
+        automaticallyImplyLeading: widget.storeConnected,
         backgroundColor: const Color(0xFFF7F5F0),
         title: Text(trans('Live Try-On'),
             style: const TextStyle(letterSpacing: 1.5)),
@@ -54,6 +63,20 @@ class _TryOnHubPageState extends State<TryOnHubPage> {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
+          if (!widget.storeConnected)
+            Container(
+              margin: const EdgeInsets.only(bottom: 16),
+              padding: const EdgeInsets.all(14),
+              decoration: BoxDecoration(
+                  color: const Color(0xFFFFF4E0),
+                  border: Border.all(color: gold),
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(children: [
+                const Icon(Icons.storefront_outlined, color: black),
+                const SizedBox(width: 10),
+                Expanded(child: Text(trans('tryon_store_not_connected'))),
+              ]),
+            ),
           Container(
             padding: const EdgeInsets.all(20),
             decoration: BoxDecoration(
@@ -88,7 +111,9 @@ class _TryOnHubPageState extends State<TryOnHubPage> {
           Text(trans('Try-On ready products'),
               style: Theme.of(context).textTheme.titleMedium),
           const SizedBox(height: 12),
-          if (_loading)
+          if (!widget.storeConnected)
+            const SizedBox.shrink()
+          else if (_loading)
             const Center(child: CircularProgressIndicator())
           else if (_products.isEmpty)
             Text(trans('tryon_no_products'))
