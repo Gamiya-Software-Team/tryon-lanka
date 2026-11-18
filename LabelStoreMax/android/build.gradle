@@ -16,3 +16,14 @@ subprojects {
 tasks.register("clean", Delete) {
     delete rootProject.buildDir
 }
+
+// Release "lintVital" checks in third-party plugins (e.g. stripe_android) try to
+// resolve extra Play Services artifacts and break the build; they are not needed
+// to produce an installable APK.
+subprojects {
+    tasks.configureEach { task ->
+        if (task.name.startsWith("lintVital")) {
+            task.enabled = false
+        }
+    }
+}
