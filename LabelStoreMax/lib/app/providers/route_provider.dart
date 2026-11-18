@@ -12,7 +12,10 @@ class RouteProvider implements NyProvider {
 
   @override
   boot(Nylo nylo) async {
-    if (AppHelper.instance.appConfig?.appStatus == null) {
+    // TRYON LANKA: when the store is not connected, still open the home
+    // route - HomePage then shows offline Try-On mode instead of an error.
+    if (AppHelper.instance.storeConnected &&
+        AppHelper.instance.appConfig?.appStatus == null) {
       nylo.initRoutes(initialRoute: '/no-connection');
       return;
     }
